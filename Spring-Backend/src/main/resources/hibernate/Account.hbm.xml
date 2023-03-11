@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="sk.fmfi.fatrabank.domain.Account" table="FATRA_ACCOUNT">
+
+        <cache usage="read-write"/>
+
+        <id name="id"
+            column="id"
+            type="java.lang.Long">
+            <generator class="identity"/>
+        </id>
+
+        <property
+            name="userId"
+            column="user_id"
+            type="java.lang.Long"
+        />
+
+        <property
+            name="accNumber"
+            column="account_number"
+            type="java.lang.Long"
+        />
+
+        <property
+            name="balance"
+            column="balance"
+            type="java.lang.Long"
+        />
+
+    </class>
+
+</hibernate-mapping>

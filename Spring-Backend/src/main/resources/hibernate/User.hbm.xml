@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="sk.fmfi.fatrabank.domain.User" table="FATRA_USER">
+
+        <cache usage="read-write"/>
+
+        <id name="id"
+            column="id"
+            type="java.lang.Long">
+            <generator class="identity"/>
+        </id>
+
+        <property
+            name="firstName"
+            column="FIRST_NAME"
+            type="java.lang.String"
+        />
+
+        <property
+            name="lastName"
+            column="LAST_NAME"
+            type="java.lang.String"
+        />
+
+        <property
+            name="email"
+            column="USER_EMAIL"
+            type="java.lang.String"
+        />
+
+        <set
+            name="accounts"
+            table="FATRA_ACCOUNT"
+            cascade="all-delete-orphan"
+            fetch="join">
+            <cache usage="read-write"/>
+            <key>
+                <column name="USER_ID" not-null="true" />
+            </key>
+            <one-to-many class="sk.fmfi.fatrabank.domain.Account"/>
+        </set>
+
+    </class>
+
+</hibernate-mapping>
